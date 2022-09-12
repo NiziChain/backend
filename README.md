@@ -7,6 +7,12 @@
 DB作成<br>
 `docker-compose run api rails db:create`
 
+マイグレーション実行<br>
+`docker-compose run api rails db:migrate`
+
+モックデータ作成<br>
+`docker-compose run api rails db:seed`
+
 Docker起動<br>
 `docker-compose up`
 
