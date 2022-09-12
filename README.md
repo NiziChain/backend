@@ -10,6 +10,15 @@ DB作成<br>
 Docker起動<br>
 `docker-compose up`
 
+backendのコンテナに入る<br>
+`docker exec -it backend /bin/bash`
+
+マイグレーション実行<br>
+`rails db:migrate`
+
+モックデータ作成<br>
+`rails db:seed`
+
 http://0.0.0.0:4000 にアクセス
 
 hello worldデザイン変わってた！！
