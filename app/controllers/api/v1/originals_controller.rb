@@ -1,5 +1,4 @@
 class Api::V1::OriginalsController < ApplicationController
-
   def create
     author = Author.find_by!(address: original_create_params[:authorAddress])
 
@@ -16,16 +15,5 @@ class Api::V1::OriginalsController < ApplicationController
   rescue StandardError => e
     logger.error e
     render_common_error
-  end
-
-  private
-
-  def original_create_params
-    params.permit(
-      :authorAddress,
-      :contentId,
-      :title,
-      :description
-    )
   end
 end
