@@ -1,10 +1,14 @@
 class Api::V1::SecondariesController < ApplicationController
   def create
+    parent = Original.find_by(title: secondary_create_params[:parentTitle])
+
+    return render_validation_error("親作品が見つかりません") unless parent
+
     author = Author.find_by!(address: secondary_create_params[:authorAddress])
 
     secondary = Secondary.new(
       author_id: author.id,
-      original_id: secondary_create_params[:parentId],
+      original_id: parent.id,
       content_id: secondary_create_params[:contentId],
       title: secondary_create_params[:title],
       description: secondary_create_params[:description],
@@ -23,7 +27,7 @@ class Api::V1::SecondariesController < ApplicationController
   def secondary_create_params
     params.permit(
       :authorAddress,
-      :parentId,
+      :parentTitle,
       :contentId,
       :title,
       :description
