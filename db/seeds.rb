@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+author = Author.find_or_create_by(id: 1, name: "akira", address: "addressssss")
+
+original1 = Original.find_or_create_by(id: 1, author_id: 1, content_id: 123, title: "ドラえもん", description: "みんな大好き")
+
+secondary1 = Secondary.find_or_create_by(id: 1, author_id: 1, original_id: 1, content_id: 456, title: "ドラえもどき", description: "みんな大嫌い")
+
+original1 = Original.find_or_create_by(id: 2, author_id: 1, content_id: 789, title: "クレヨンしんちゃん", description: "みんな知ってる")
+
+secondary1 = Secondary.find_or_create_by(id: 2, author_id: 1, original_id: 2, content_id: 1011, title: "シャーペンしんちゃん", description: "みんな知らない")
+
+puts "Finished"
