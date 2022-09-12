@@ -1,4 +1,16 @@
 class Api::V1::OriginalsController < ApplicationController
+  def show
+    original = Original.find(params[:id])
+
+    render status: :ok, json: {
+      title: original.title,
+      description: original.description,
+      created_at: original.created_at.strftime("%Y.%m.%d")
+    }
+  rescue StandardError => e
+    logger.error e
+    render_common_error
+  end
 
   def create
     author = Author.find_by!(address: original_create_params[:authorAddress])
