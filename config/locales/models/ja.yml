@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      original: 親作品
+      secondary: 子作品
+    attributes:
+      original:
+        content_id: 作品ID
+        title: タイトル
+        description: 作品情報
+      secondary:
+        content_id: 作品ID
+        title: タイトル
+        description: 作品情報

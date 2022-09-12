@@ -7,19 +7,21 @@
 DB作成<br>
 `docker-compose run api rails db:create`
 
-Docker起動<br>
+コンテナ起動<br>
 `docker-compose up`
 
-backendのコンテナに入る<br>
-`docker exec -it backend /bin/bash`
+http://0.0.0.0:4000 にアクセスできたらok!
 
-マイグレーション実行<br>
-`rails db:migrate`
+## 新たにpullした後にすること
+コンテナ停止<br>
+`docker-compose down`
 
-モックデータ作成<br>
-`rails db:seed`
+ビルドし直す<br>
+`docker-compose build`
 
-http://0.0.0.0:4000 にアクセス
+コンテナ起動<br>
+`docker-compose up`
+
 
 hello worldデザイン変わってた！！
 
