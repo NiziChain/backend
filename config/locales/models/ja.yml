@@ -1,8 +1,8 @@
 ja:
   activerecord:
     models:
-      original: ユーザー
-      secondary: 栄養士
+      original: 親作品
+      secondary: 子作品
     attributes:
       original:
         content_id: 作品ID
