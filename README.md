@@ -7,14 +7,17 @@
 DB作成<br>
 `docker-compose run api rails db:create`
 
-マイグレーション実行<br>
-`docker-compose run api rails db:migrate`
-
-モックデータ作成<br>
-`docker-compose run api rails db:seed`
-
 Docker起動<br>
 `docker-compose up`
+
+backendのコンテナに入る<br>
+`docker exec -it backend /bin/bash`
+
+マイグレーション実行<br>
+`rails db:migrate`
+
+モックデータ作成<br>
+`rails db:seed`
 
 http://0.0.0.0:4000 にアクセス
 
