@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      original: ユーザー
+      secondary: 栄養士
+    attributes:
+      original:
+        content_id: 作品ID
+        title: タイトル
+        description: 作品情報
+      secondary:
+        content_id: 作品ID
+        title: タイトル
+        description: 作品情報
