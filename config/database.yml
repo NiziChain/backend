@@ -53,9 +53,5 @@ test:
 #
 production:
   <<: *default
-  database: api_production
   adapter: postgresql
   encoding: utf8mb4
-  pool: 5
-  username: root
-  password: backend-db
