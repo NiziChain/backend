@@ -1,5 +1,4 @@
 class Api::V1::OriginalsController < ApplicationController
-
   def create
     author = Author.find_by!(address: original_create_params[:authorAddress])
 
