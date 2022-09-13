@@ -6,9 +6,10 @@ class Api::V1::ContentsController < ApplicationController
     originals = Original.all.map do |original|
       {
         isOriginal: true,
+        contentId: original.content_id,
         title: original.title,
         description: original.description,
-        created_at: format_date(original.created_at)
+        createdAt: format_date(original.created_at)
       }
     end
     contents.concat(originals)
@@ -16,9 +17,10 @@ class Api::V1::ContentsController < ApplicationController
     secondaries = Secondary.all.map do |secondary|
       {
         isOriginal: false,
+        contentId: secondary.content_id,
         title: secondary.title,
         description: secondary.description,
-        created_at: format_date(secondary.created_at)
+        createdAt: format_date(secondary.created_at)
       }
     end
     contents.concat(secondaries)
