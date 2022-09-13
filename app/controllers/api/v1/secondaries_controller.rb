@@ -1,4 +1,20 @@
 class Api::V1::SecondariesController < ApplicationController
+  include FormatDateHelper
+
+  def show
+    secondary = Secondary.find_by!(content_id: params[:contentId])
+
+    render status: :ok, json: {
+      contentId: secondary.content_id,
+      title: secondary.title,
+      description: secondary.description,
+      createdAt: format_date(secondary.created_at)
+    }
+  rescue StandardError => e
+    logger.error e
+    render_common_error
+  end
+
   def create
     parent = Original.find_by(title: secondary_create_params[:parentTitle])
 

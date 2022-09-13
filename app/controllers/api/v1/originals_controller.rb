@@ -5,6 +5,7 @@ class Api::V1::OriginalsController < ApplicationController
     original = Original.find_by!(content_id: params[:contentId])
 
     render status: :ok, json: {
+      contentId: original.content_id,
       title: original.title,
       description: original.description,
       createdAt: format_date(original.created_at)
