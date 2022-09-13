@@ -16,4 +16,15 @@ class Api::V1::OriginalsController < ApplicationController
     logger.error e
     render_common_error
   end
+
+  private
+
+  def original_create_params
+    params.permit(
+      :authorAddress,
+      :contentId,
+      :title,
+      :description
+    )
+  end
 end
