@@ -7,6 +7,7 @@ class Api::V1::AuthorsController < ApplicationController
     contents = []
     originals = author.originals.map do |original|
       {
+        isOriginal: true,
         contentId: original.content_id,
         title: original.title,
         description: original.description,
@@ -17,6 +18,7 @@ class Api::V1::AuthorsController < ApplicationController
 
     secondaries = author.secondaries.all.map do |secondary|
       {
+        isOriginal: false,
         contentId: secondary.content_id,
         title: secondary.title,
         description: secondary.description,
