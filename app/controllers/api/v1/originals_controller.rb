@@ -2,7 +2,7 @@ class Api::V1::OriginalsController < ApplicationController
   include FormatDateHelper
 
   def show
-    original = Original.find(params[:id])
+    original = Original.find_by!(content_id: params[:contentId])
 
     render status: :ok, json: {
       title: original.title,

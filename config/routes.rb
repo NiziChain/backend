@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1, defaults: { format: "json" } do
-      resources :originals, only: %i(show create)
+      resources :originals, only: %i(create)
+      resources :originals, only: :show, param: :contentId
       resource :secondaries, only: %i(create)
       get "contents", controller: "contents", action: "index"
       # resource :secondaries, only: %i(create)
