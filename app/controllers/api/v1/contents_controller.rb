@@ -1,4 +1,6 @@
 class Api::V1::ContentsController < ApplicationController
+  include FormatDateHelper
+
   def index
     contents = []
     originals = Original.all.map do |original|
@@ -6,7 +8,7 @@ class Api::V1::ContentsController < ApplicationController
         isOriginal: true,
         title: original.title,
         description: original.description,
-        created_at: original.created_at.strftime("%Y.%m.%d")
+        created_at: format_date(original.created_at)
       }
     end
     contents.concat(originals)
@@ -16,7 +18,7 @@ class Api::V1::ContentsController < ApplicationController
         isOriginal: false,
         title: secondary.title,
         description: secondary.description,
-        created_at: secondary.created_at.strftime("%Y.%m.%d")
+        created_at: format_date(secondary.created_at)
       }
     end
     contents.concat(secondaries)
