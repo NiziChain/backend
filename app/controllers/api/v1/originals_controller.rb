@@ -1,11 +1,13 @@
 class Api::V1::OriginalsController < ApplicationController
+  include FormatDateHelper
+
   def show
     original = Original.find(params[:id])
 
     render status: :ok, json: {
       title: original.title,
       description: original.description,
-      created_at: original.created_at.strftime("%Y.%m.%d")
+      created_at: format_date(original.created_at)
     }
   rescue StandardError => e
     logger.error e
