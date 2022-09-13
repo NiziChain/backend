@@ -7,7 +7,7 @@ class Api::V1::OriginalsController < ApplicationController
     render status: :ok, json: {
       title: original.title,
       description: original.description,
-      created_at: format_date(original.created_at)
+      createdAt: format_date(original.created_at)
     }
   rescue StandardError => e
     logger.error e
