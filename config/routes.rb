@@ -7,9 +7,9 @@ Rails.application.routes.draw do
       resource :secondaries, only: %i(create)
       resources :secondaries, only: :show, param: :contentId
 
+      resources :authors, only: :show, param: :address
+
       get "contents", controller: "contents", action: "index"
-      # resource :contents, only: %i(index)
-      # resource :authors, only: %i(show)
     end
   end
 end
