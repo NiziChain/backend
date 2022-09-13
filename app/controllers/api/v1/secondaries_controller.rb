@@ -16,11 +16,15 @@ class Api::V1::SecondariesController < ApplicationController
   end
 
   def create
+    addressParam = secondary_create_params[:authorAddress]
+    unless Author.find_by(address: addressParam)
+      Author.create!(name: addressParam, address: addressParam)
+    end
+    author = Author.find_by!(address: addressParam)
+
     parent = Original.find_by(title: secondary_create_params[:parentTitle])
 
     return render_validation_error("親作品が見つかりません") unless parent
-
-    author = Author.find_by!(address: secondary_create_params[:authorAddress])
 
     secondary = Secondary.new(
       author_id: author.id,
