@@ -16,7 +16,11 @@ class Api::V1::OriginalsController < ApplicationController
   end
 
   def create
-    author = Author.find_by!(address: original_create_params[:authorAddress])
+    addressParam = original_create_params[:authorAddress]
+    unless Author.find_by(address: addressParam)
+      Author.create!(name: addressParam, address: addressParam)
+    end
+    author = Author.find_by!(address: addressParam)
 
     original = Original.new(
       author_id: author.id,
