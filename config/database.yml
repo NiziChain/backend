@@ -54,4 +54,3 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  encoding: utf8mb4
