@@ -5,7 +5,7 @@ class Api::V1::AuthorsController < ApplicationController
     author = Author.find_by!(address: params[:address])
 
     contents = []
-    originals = author.originals.map do |original|
+    originals = author.originals.order(id: "DESC").map do |original|
       {
         isOriginal: true,
         contentId: original.content_id,
@@ -16,7 +16,7 @@ class Api::V1::AuthorsController < ApplicationController
     end
     contents.concat(originals)
 
-    secondaries = author.secondaries.all.map do |secondary|
+    secondaries = author.secondaries.order(id: "DESC").map do |secondary|
       {
         isOriginal: false,
         contentId: secondary.content_id,

@@ -3,7 +3,7 @@ class Api::V1::ContentsController < ApplicationController
 
   def index
     contents = []
-    originals = Original.all.map do |original|
+    originals = Original.order(id: "DESC").map do |original|
       {
         isOriginal: true,
         contentId: original.content_id,
@@ -14,7 +14,7 @@ class Api::V1::ContentsController < ApplicationController
     end
     contents.concat(originals)
 
-    secondaries = Secondary.all.map do |secondary|
+    secondaries = Secondary.order(id: "DESC").map do |secondary|
       {
         isOriginal: false,
         contentId: secondary.content_id,
